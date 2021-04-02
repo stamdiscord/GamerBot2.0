@@ -6,20 +6,41 @@ module.exports = (client) => {
 	console.log(`${client.user.username} is online! Hosting ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
 
 	//Register commands
-	client.api.applications(client.user.id).guilds("813844220694757447").commands.post({
-		data: {
-			name: "ping",
-			description: "hello world command",
-			options: [
-				{
-					"type": 3,
-					"name": "testname",
-					"description": "testdesc",
+	for (const cmd of client.commands) {
+		const command = cmd[1];
+		client.api.applications(client.user.id).guilds("813844220694757447").commands.post({
+			data: {
+				name: command.name,
+				description: command.description,
+				options: [
+					{
+						"type": 3,
+						"name": "testname",
+						"description": "testdesc",
+					}
+				]
+			}
+		}).catch((err) => {
+			console.log(`Failed to register slash commands! Error: ${err}`);
+		});
+		for (const alias of command.aliases) {
+			client.api.applications(client.user.id).guilds("813844220694757447").commands.post({
+				data: {
+					name: alias,
+					description: command.description,
+					options: [
+						{
+							"type": 3,
+							"name": "testname",
+							"description": "testdesc",
+						}
+					]
 				}
-			]
+			}).catch((err) => {
+				console.log(`Failed to register slash commands! Error: ${err}`);
+			});
 		}
-	});
-
+	}
 
 	client.ws.on('INTERACTION_CREATE', async interaction => {
 		const cmd = interaction.data.name.toLowerCase();
