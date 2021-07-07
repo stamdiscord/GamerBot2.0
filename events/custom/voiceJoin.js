@@ -12,11 +12,19 @@ module.exports = async (oldMember, newMember) => {
 			type: "voice"
 		});
 		channel.setParent(client.channels.cache.get(newMember.channelID).parentID);
+		channel.overwritePermissions([
+			{
+				id: client.guilds.cache.get(newMember.guild.id).roles.everyone,
+				deny: ["VIEW_CHANNEL", "SPEAK", "CONNECT", "CREATE_INSTANT_INVITE"] 	//Deny permissions
+			},
+			{
+				id: newMember.id,
+				allow: ["VIEW_CHANNEL", "SPEAK", "CONNECT"]								//Allow permissions
+			}
+		]);
 
 		profileData.privateVoiceID = channel.id;		//Register channel id in user's profile
 		profileData.save();
 		member.voice.setChannel(channel);				//Move user into the newly created voicechat
-
-		console.log(channel);
 	}
 }
