@@ -8,7 +8,8 @@ const profileSchema = new mongoose.Schema({
 	xpTimeoutUntil: { type: Number },
 	level: { type: Number },
 	reminders: { type: Array },
-	colorHexCode: {type: String}
+	colorHexCode: { type: String },
+	privateVoiceID: { type: String, default: "" }
 });
 
 const model = mongoose.model("ProfileModels", profileSchema);

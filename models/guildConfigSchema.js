@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const guildConfigSchema = new mongoose.Schema({
-    guildID: { type: String, require: true, unique: true},
+	guildID: { type: String, require: true, unique: true },
 	privateVoiceChannel: { type: String, default: "" }
 });
 
@@ -11,8 +11,8 @@ const fetchGuildConfig = async (guildID) => {
 	let data = await model.findOne({ guildID: guildID });
 	if (!data) {
 		data = await model.create({
-            guildID: guildID
-        });
+			guildID: guildID
+		});
 		await data.save();
 	}
 	return data;
