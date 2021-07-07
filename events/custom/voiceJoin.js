@@ -11,9 +11,12 @@ module.exports = async (oldMember, newMember) => {
 		const channel = await newMember.guild.channels.create(`Privat VC - ${member.user.tag}`, {
 			type: "voice"
 		});
+		channel.setParent(client.channels.cache.get(newMember.channelID).parentID);
+
 		profileData.privateVoiceID = channel.id;		//Register channel id in user's profile
 		profileData.save();
-
 		member.voice.setChannel(channel);				//Move user into the newly created voicechat
+
+		console.log(channel);
 	}
 }
