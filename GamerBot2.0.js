@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const functions = require("./functions");
 require('dotenv').config();
 
-const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+global.client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 const token = process.env.token;
 
 functions.initWebserver(client)		//Start a web server
