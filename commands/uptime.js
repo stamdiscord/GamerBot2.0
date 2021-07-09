@@ -8,9 +8,9 @@ module.exports = {
 	usage: [],
 	perms: [],
 	async do(message, args, profileData) {
-	let currentTime = new Date().getTime();
-	let restartTime = new Date(currentTime - message.client.uptime);
-	
+		let currentTime = new Date().getTime();
+		let restartTime = new Date(currentTime - message.client.uptime);
+
 		const embed = new Discord.MessageEmbed()
 			.setColor("#0099ff")
 			.setTitle("Uptime")
