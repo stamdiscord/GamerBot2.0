@@ -45,7 +45,7 @@ module.exports = async (message, client) => {
 					message.channel.send("Det har inträffat ett fel med det här kommandot. Se konsolen för mer information!")
 				}
 			} else {
-				message.channel.send("Du har inte tillåtelse att exekvera det här kommandot!");
+				message.channel.send("Du har inte tillåtelse att använda det här kommandot!");
 			}
 		} 
 		else if(command.perms.includes("trustedCmd")){

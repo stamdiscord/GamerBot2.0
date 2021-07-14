@@ -7,6 +7,7 @@ const profileSchema = new mongoose.Schema({
 	lastMessageTimestamp: { type: Number },
 	xpTimeoutUntil: { type: Number },
 	level: { type: Number },
+	reminders: { type: Array },
 	colorHexCode: {type: String},
 	profileFrame: {type: String}
 });
@@ -23,6 +24,7 @@ const fetchProfile = async (userID, serverID, lastMessageTimestamp = null, xpTim
 			lastMessageTimestamp: lastMessageTimestamp,
 			xpTimeoutUntil: xpTimeoutUntil,
 			level: 1,
+			reminders: [],
 			colorHexCode: colorHexCode,
 			profileFrame : profileFrame
 		});

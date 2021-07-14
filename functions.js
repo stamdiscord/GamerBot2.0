@@ -111,8 +111,8 @@ module.exports = {
 			var vids = [];
 			for(let i = 0 ; i < configData.NotisChannels.length; i++){
 				await executeGoogle.getdad(configData.NotisChannels[i].id,async function(err, data){
-					let channelId = data.feed.url.split("=")[1];
-					let id = data.items[0].guid.split(":")[2];
+					let channelId = await data.feed.url.split("=")[1];
+					let id = await data.items[0].guid.split(":")[2];
 					let title = data.items[0].title;
 					let ChannelName = data.feed.title;
 					let obj = {
@@ -147,7 +147,7 @@ module.exports = {
 					}
 				}
 				await configData.save();
-			}, 2000)
+			}, 5000)
 			var twInfo = await executeTwitch();
 			if(twInfo != null){
 				if(twInfo.id != configData.latestLiveStreamId){
