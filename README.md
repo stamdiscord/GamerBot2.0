@@ -96,9 +96,7 @@ The owner of the server and all users with the role `Administrator` can use thes
 
 
 ## Contribution
-If you want to contribute to the development of the bot you can do so in the following ways:
-- **Create a new [issue](https://github.com/stamdiscord/GamerBot2.0/issues):** This is used to notify others that you've found a bug that needs to be fixed or that you want a new feature.
-- **Make a [Pull Request](https://github.com/stamdiscord/GamerBot2.0/pulls):** Make Pull Requests with small changes. Try to only face one issue at a time.
+You can find information about how to contribute to this repository [here](CONTRIBUTING.md)!
 
 ## Network graph
 Click [here](https://github.com/stamdiscord/GamerBot2.0/network) to view the network graph of this project.
